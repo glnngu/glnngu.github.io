@@ -1,1 +1,67 @@
-Hello World from me!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Email marketing tool for Web Key IT">
+    <meta name="author" content="Web Key IT">
+    <meta name="keywords" content="eMarketing, Accessible, Email">
+    <title>"eMarketing tool name"</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+</head>
+  
+<body>
+
+    <form name="emailForm" action="/" method="POST">
+        <label for="toaddress">To:</label>
+        <input type="email" multiple id="toaddress" name="toAddress" required>
+        <br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        <br>
+        <label for="emailbody" class="hidden">Write email message here:</label>
+        <br>
+        <textarea id="emailbody" name="emailBody" aria-label="email body" rows="20" cols="50" required></textarea>
+        <br>
+        <button name="submit" type="submit" id="send" value="fav_HTML">Send</button>
+    </form>
+    <br> 
+    <form name="uploadDraft">
+        <input type="file" id="draft" name="draft" accept=".txt">
+        <button type="button" id="load" onclick="loadDraft()">Load Draft</button> 
+    </form>
+    <br> 
+   
+    <div id="output"></div> 
+      
+    <script type="text/javascript"> 
+
+        function loadDraft() {
+
+            console.log("Running Load Draft!");
+            var uploadedDraft = document.getElementById("draft").files[0];
+            var fileReader = new FileReader;
+            fileReader.onload = function() {
+            document.getElementById("emailbody").innerHTML = fileReader.result;
+            }
+            fileReader.readAsText(uploadedDraft);
+        }
+
+        // document.getElementById('draft') 
+        //     .addEventListener('change', function() { 
+              
+        //     console.log('Running load draft')
+        //     var fileReader = new FileReader(); 
+        //     fileReader.onload=function(){
+        //         document.getElementById("emailbody").innerHTML = fileReader.result;
+        //     } 
+              
+        //     fileReader.readAsText(this.files[0]); 
+        // }) 
+    </script> 
+</body> 
+  
+</html> 
